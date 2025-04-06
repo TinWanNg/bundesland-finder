@@ -5,20 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Region extends Model
+class Bezirk extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'bundesland_id'];
+    protected $fillable = ['name', 'bundesland_id', 'geometry'];
+
+    protected $casts = [
+        'geometry' => 'array',
+    ];
 
     public function bundesland()
     {
         return $this->belongsTo(Bundesland::class);
     }
 
-    public function cities()
+    public function kreise()
     {
-        return $this->hasMany(City::class);
+        return $this->hasMany(Kreis::class);
     }
 }
 

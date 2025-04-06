@@ -11,7 +11,8 @@ services:
       - db
 
   db:
-    image: postgres:latest
+    image: postgis/postgis:17-3.5
+    platform: linux/amd64
     ports:
       - "5432:5432"
     container_name: postgres-db

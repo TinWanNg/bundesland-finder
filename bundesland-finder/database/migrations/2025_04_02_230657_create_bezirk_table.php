@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('bundesland', function (Blueprint $table) {
+        Schema::create('bezirk', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            // $table->string('capital')->unique();
+            $table->foreignId('bundesland_id')->constrained('bundesland')->onDelete('cascade');
             $table->longText('geometry');
             $table->timestamps();
         });
@@ -18,7 +18,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('bundesland');
+        Schema::dropIfExists('bezirk');
     }
 };
-

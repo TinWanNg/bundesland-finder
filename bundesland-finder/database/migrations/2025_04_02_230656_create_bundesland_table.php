@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('bundesland', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('capital')->unique();
+            // $table->string('capital')->unique();
             $table->longText('geometry');
             $table->timestamps();
         });

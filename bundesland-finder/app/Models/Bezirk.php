@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bezirk extends Model
 {
+    protected $table = 'bezirk';
+
     use HasFactory;
 
     protected $fillable = ['name', 'bundesland_id', 'geometry'];

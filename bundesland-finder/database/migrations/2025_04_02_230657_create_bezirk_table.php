@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('bezirk', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->foreignId('bundesland_id')->constrained('bundesland')->onDelete('cascade');
             $table->longText('geometry');
             $table->timestamps();

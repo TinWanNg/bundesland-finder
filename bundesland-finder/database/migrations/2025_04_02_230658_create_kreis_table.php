@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('kreis', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->foreignId('bezirk_id')->constrained('bezirk')->onDelete('cascade');
             $table->longText('geometry');
             $table->timestamps();

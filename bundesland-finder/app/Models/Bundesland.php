@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bundesland extends Model
 {
+    protected $table = 'bundesland';
+    
     use HasFactory;
 
-    protected $fillable = ['name', 'capital', 'geometry'];
+    protected $fillable = ['name', 'geometry'];  // , 'capital'
 
     protected $casts = [
         'geometry' => 'array',

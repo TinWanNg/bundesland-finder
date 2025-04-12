@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kreis extends Model
 {
+    protected $table = 'kreis';
+
     use HasFactory;
 
     protected $fillable = ['name', 'bezirk_id', 'geometry'];

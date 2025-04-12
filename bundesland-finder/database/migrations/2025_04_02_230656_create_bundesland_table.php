@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name')->unique();
             $table->string('capital')->unique();
-            $table->geometry('positions', subtype: 'point', srid: 0);
+            $table->longText('geometry');
             $table->timestamps();
         });
     }

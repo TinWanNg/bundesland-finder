@@ -1,0 +1,10 @@
+"frontend will call this Query"
+type Query {
+  searchBundesland(name: String!): [Bundesland!]!
+}
+
+"match table"
+type Bundesland {
+  id: ID!
+  name: String!
+}

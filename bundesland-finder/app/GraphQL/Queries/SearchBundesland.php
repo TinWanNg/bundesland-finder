@@ -10,7 +10,7 @@ class SearchBundesland
 {
     public function __invoke($_, array $args)
     {
-        $name = strtolower($args['name']);
+        $name = strtolower($args['name']);  // the input name from schema - type Query we set earlier
 
         // Match Bezirk
         $bezirkBundeslandIds = Bezirk::whereRaw('LOWER(name) LIKE ?', ["%{$name}%"])
@@ -27,4 +27,13 @@ class SearchBundesland
         return Bundesland::whereIn('id', $allBundeslandIds)->get();
     }
 }
+
+
+// example usage
+// query {
+//    searchBundesland(name: "München") {
+//      name
+//    }
+//  }
+  
 

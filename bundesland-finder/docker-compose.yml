@@ -3,6 +3,8 @@ services:
     build: .
     image: laravel-app:latest
     container_name: laravel-app
+    ports:
+      - "8000:8000"
     volumes:
       - .:/var/www/html
     networks:

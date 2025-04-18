@@ -24,7 +24,7 @@ class Bezirk extends Model
 
     public function kreise()
     {
-        return $this->hasMany(Kreis::class);
+        return $this->hasMany(Kreis::class, 'bundesland_id');
     }
 }
 

@@ -17,9 +17,9 @@ class Kreis extends Model
         'geometry' => 'array',
     ];
 
-    public function region()
+    public function bezirk()
     {
-        return $this->belongsTo(Bezirk::class);
+        return $this->belongsTo(Bezirk::class, 'bezirk_id');
     }
 }
 

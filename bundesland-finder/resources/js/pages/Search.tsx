@@ -26,10 +26,47 @@ const Search = () => {
     fetchData();
   }, [query]);  // query changes -> fetchData inside useEffect is called
 
+
   const handleCopy = (text: string) => {
-    navigator.clipboard.writeText(text);
-    alert(`Copied: ${text}`);
+    // if Clipboard API is usable
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      // write to clipboard directly
+      navigator.clipboard.writeText(text)
+        .catch((err) => {
+          console.error('Clipboard write failed:', err);
+          alert('Failed to copy text.');
+        });
+    } 
+    // else for other env/ browsers
+    else {
+      // create an off-screen elemnt so that it's not visible
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.top = '0';
+      textarea.style.left = '0';
+      textarea.style.opacity = '0';
+  
+      // Add it to document body so that it DOM must "see" the textarea, then select its text
+      document.body.appendChild(textarea);
+      textarea.focus();  // like user clicking
+      textarea.select();  // like user highlighting
+  
+      try {
+        // copy using the old-school execCommand
+        const successful = document.execCommand('copy');
+        // alert(successful ? `Copied: ${text}` : 'Copy failed');
+      } catch (err) {
+        // Log and notify if that also fails
+        console.error('Fallback copy failed:', err);
+        alert('Copy failed');
+      }
+  
+      // Clean up: remove the textarea from the page
+      document.body.removeChild(textarea);
+    }
   };
+  
 
   return (
     <div className="p-4 max-w-xl mx-auto">

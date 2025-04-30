@@ -90,12 +90,12 @@ const Search = () => {
           <li key={idx} className="flex items-center justify-between border p-2 rounded shadow-sm">
             <p className="font-medium">{item.bundesland_name} - {item.bezirk_name} - {item.kreis_name}</p>
             <button
-              onClick={() => {handleCopy(item.name);setClickedIdx(idx);setTimeout(() => setClickedIdx(null), 1000);}}
+              onClick={() => {handleCopy(item.bundesland_name);setClickedIdx(idx);setTimeout(() => setClickedIdx(null), 1000);}}
               className={`px-2 py-1 text-sm rounded transition-transform duration-100
                 ${clickedIdx === idx ? 'bg-green-600' : 'bg-blue-500'} 
                 text-white hover:bg-blue-600 active:scale-95`}
             >
-              {clickedIdx === idx ? 'Copied!' : 'Copy'}
+              {clickedIdx === idx ? 'Bundesland Copied!' : 'Copy'}
             </button>
           </li>
         ))}

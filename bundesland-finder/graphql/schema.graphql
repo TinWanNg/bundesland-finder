@@ -6,5 +6,7 @@ type Query {
 "match table"
 type Bundesland {
   id: ID!
-  name: String!
+  bundesland_name: String!
+  bezirk_name: String!
+  kreis_name: String
 }

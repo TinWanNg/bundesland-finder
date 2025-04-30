@@ -17,7 +17,13 @@ const Search = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({query: `query {searchBundesland(name: "${query}") {name}}`}),
+        body: JSON.stringify({
+          query: `query {searchBundesland(name: "${query}") 
+            {bundesland_name
+            bezirk_name
+            kreis_name}
+            }`
+        }),
       });
 
       const json = await res.json();
@@ -82,7 +88,7 @@ const Search = () => {
       <ul className="mt-4 space-y-2">
         {results.map((item, idx) => (  // map all results
           <li key={idx} className="flex items-center justify-between border p-2 rounded shadow-sm">
-            <p className="font-medium">{item.name}</p>
+            <p className="font-medium">{item.bundesland_name} - {item.bezirk_name} - {item.kreis_name}</p>
             <button
               onClick={() => {handleCopy(item.name);setClickedIdx(idx);setTimeout(() => setClickedIdx(null), 1000);}}
               className={`px-2 py-1 text-sm rounded transition-transform duration-100
